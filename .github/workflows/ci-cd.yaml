@@ -5,7 +5,7 @@ on:
 env:  # ← Ska vara här (samma nivå som on:)
   IMAGE_REGISTRY: quay.io
   IMAGE_NAME: gabohr/demo-python-app
-  CONFIG_REPO: gabriellaohrn/demo-python-app-config
+  CONFIG_REPO: gabriellaohrn/gabriellas-python-app-config
 jobs:  # ← Ska vara här (samma nivå som on:)
   build-and-push:
     runs-on: ubuntu-latest
