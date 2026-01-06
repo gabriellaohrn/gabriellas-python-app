@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: gabriella-python-app
   namespace: grupp5
+  labels:
+    app: gabriella-python-app
 spec:
   replicas: 1
   selector:
@@ -15,31 +17,9 @@ spec:
     spec:
       containers:
       - name: python-app
-        image: quay.io/gabohr/guestbook-backend:latest
+        image: quay.io/gabriellaohrn/gabriellas-python-app:latest
         ports:
         - containerPort: 5000
         env:
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: gabriella-db-secret
-              key: username
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: gabriella-db-secret
-              key: password
-        - name: POSTGRES_DB
-          valueFrom:
-            secretKeyRef:
-              name: gabriella-db-secret
-              key: database
-        - name: POSTGRES_HOST
-          value: "postgres"
-        resources:
-          requests:
-            cpu: "100m"
-            memory: "128Mi"
-          limits:
-            cpu: "200m"
-            memory: "256Mi"
+        - name: DATABASE_URL
+          value: "postgresql://user:password@hostname:5432/dbname"
