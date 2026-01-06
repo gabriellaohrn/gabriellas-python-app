@@ -1,0 +1,11 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: gabriella-route
+  namespace: grupp5
+spec:
+  to:
+    kind: Service
+    name: gabriella-service
+  port:
+    targetPort: 5000
